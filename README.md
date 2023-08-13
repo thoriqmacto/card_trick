@@ -47,8 +47,6 @@ cd C:\Program Files\MongoDB\Server\<version>\bin
 
 **Version 1.0**
 
-![page snapshot]()
-
 ## LICENSE
 
 MIT License
