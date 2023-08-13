@@ -13,7 +13,8 @@ This codebase was not fully similar with the tutorial. Some of modifications has
 3. You can start to code.
 
 ## Running The Code
-1. 
+
+1.
 
 ## Installing & Run MongoDB Server Locally (Windows)
 
@@ -46,8 +47,7 @@ cd C:\Program Files\MongoDB\Server\<version>\bin
 
 **Version 1.0**
 
-![Pirple Course Completion Certificate](https://github.com/thoriqmacto/app_pirple/blob/main/public/course_cert.jpg?raw=true)
-
+![page snapshot]()
 
 ## LICENSE
 
