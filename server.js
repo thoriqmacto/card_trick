@@ -10,9 +10,9 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
-const URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const URI = process.env.MONGODB_URI || "mongodb://localhost:27017/";
 const PORT = process.env.PORT || 5000;
-const DB_NAME = process.env.DB_NAME || "localDB";
+const DB_NAME = process.env.DB_NAME || "local";
 
 // Initialize body-parser to parse request body
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,33 +30,37 @@ app.get("/secret", (req, res) =>
 // Optional data: none
 app.post("/secret", (req, res) => {
   // Connect to the db
-  MongoClient.connect(URI, { useNewUrlParser: true }, (err, client) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // initilize collection
-      const db = client.db(DB_NAME);
-      const collection = db.collection("names");
+  MongoClient.connect(
+    URI + DB_NAME,
+    { useNewUrlParser: true },
+    (err, client) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // initilize collection
+        const db = client.db(DB_NAME);
+        const collection = db.collection("names");
 
-      // Construct data required to process by using body-parser
-      const entry = {
-        name: req.body.name.trim().toLowerCase(),
-        card: req.body.number + "_of_" + req.body.suit,
-      };
+        // Construct data required to process by using body-parser
+        const entry = {
+          name: req.body.name.trim().toLowerCase(),
+          card: req.body.number + "_of_" + req.body.suit,
+        };
 
-      // Insert the data
-      collection.insertOne(entry, (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send("Insertd into database");
-        }
-      });
+        // Insert the data
+        collection.insertOne(entry, (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send("Insertd into database");
+          }
+        });
 
-      // Close the db connection
-      client.close();
+        // Close the db connection
+        client.close();
+      }
     }
-  });
+  );
 });
 
 // Any - GET
