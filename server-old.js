@@ -8,10 +8,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const { MongoClient, Db } = require("mongodb");
-const URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
+const {MongoClient} = require("mongodb");
+const URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/";
 const PORT = process.env.PORT || 5000;
-const DB_NAME = process.env.DB_NAME || "cards";
+const DB_NAME = process.env.DB_NAME || "local";
 
 // Initialize body-parser to parse request body
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,33 +27,39 @@ app.get("/secret", (req, res) =>
 // Secret - POST
 // Required data: name, card
 // Optional data: none
-MongoClient.connect(URI, { useUnifiedTopology: true }, (err, client) => {
-  if (err) {
-    console.error("Error connecting to MongoDB:", err);
-    return;
-  }
+app.post("/secret", (req, res) => {
+  // Connect to the db
+  MongoClient.connect(
+    URI + DB_NAME,
+    { useNewUrlParser: true },
+    (err, client) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // initilize collection
+        const db = client.db(DB_NAME);
+        const collection = db.collection("names");
 
-  console.log("Connected to MongoDB");
-  const db = client.db(DB_NAME);
+        // Construct data required to process by using body-parser
+        const entry = {
+          name: req.body.name.trim().toLowerCase(),
+          card: req.body.number + "_of_" + req.body.suit,
+        };
 
-  // Define a route to handle POST requests
-  app.post("/secret", async (req, res) => {
-    try {
-      const entry = {
-        name: req.body.name.trim().toLowerCase(),
-        card: req.body.number + "_of_" + req.body.suit,
-      };
+        // Insert the data
+        collection.insertOne(entry, (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send("Insertd into database");
+          }
+        });
 
-      await db.collection("names").insertOne(entry);
-      res.status(201).json({ message: "Data saved successfully" });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Error saving data" });
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
+        // Close the db connection
+        client.close();
+      }
     }
-  });
+  );
 });
 
 // Any - GET
