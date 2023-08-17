@@ -14,6 +14,13 @@ async function run() {
     // Establish and verify connection
     await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to server");
+
+    const data = {
+      first: "Thariq",
+      last: "Hadad",
+    };
+    await client.db("localDB").collection("name").insertOne(data);
+    console.log("Trying to save data");
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
