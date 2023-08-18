@@ -57,39 +57,37 @@ app.post("/secret", async (req, res) => {
 // Any - GET
 // Required data: none
 // Optional data: none
-app.get(":param*", async (req, res) => {
+app.get("/:param*", async (req, res) => {
   // Get the request parameter from URL
   const nameParam = req.url.slice(1).toLowerCase();
 
-  // Connect to the DB
   try {
     await client.connect();
 
-    // If nameParam == "deleteall" perform database resetting
     if (nameParam === "deleteall") {
-      await collection.remove({});
       res.send("Database Reset");
     } else {
-      // Search the nameParam to the db
-      collection.find({ name: nameParam }).toArray((err, result) => {
-        if (err) {
-          console.log(err);
-        } else if (result.length) {
-          // Get card data from db
+      const query = { name: nameParam }; 
+
+      try {
+        const result = await collection.find(query).toArray();
+
+        if (result.length) {
+          // Construct card data
           const card = result[result.length - 1].card + ".png";
           res.sendFile(path.join(__dirname + "/public/cards/" + card));
         } else {
           res.sendStatus(404);
         }
-      });
+      } catch (err) {
+        console.error(err);
+        res.send("Error retrieving data");
+      }
     }
-  } catch (error) {
-    console.error(error);
-    // res.status(500).json({ message: "Error retreiving data" });
-    res.send("Error retreiving data");
-  } finally {
-    client.close();
-  }
+  } catch (err) {
+    console.error(err);
+    res.send("Error connect to db");
+  }  
 });
 
 // Start the server
