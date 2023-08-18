@@ -65,9 +65,10 @@ app.get("/:param*", async (req, res) => {
     await client.connect();
 
     if (nameParam === "deleteall") {
-      res.send("Database Reset");
+      const result = await collection.deleteMany({});
+      res.send("Database Reset \n Total Data Deleted: " + result.deletedCount);
     } else {
-      const query = { name: nameParam }; 
+      const query = { name: nameParam };
 
       try {
         const result = await collection.find(query).toArray();
@@ -87,7 +88,9 @@ app.get("/:param*", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.send("Error connect to db");
-  }  
+  } finally {
+    client.close();
+  }
 });
 
 // Start the server
