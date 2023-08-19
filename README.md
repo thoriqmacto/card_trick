@@ -22,26 +22,6 @@ This codebase was not fully similar with the tutorial. Some of modifications has
 2. Choose the MSI package for Windows and follow the installation instructions.
 3. Run the downloaded MSI installer. Choose "Complete" as the setup type to install all necessary components. Follow the installation wizard, and make sure to select the option to install MongoDB as a service. This will ensure that the MongoDB server starts automatically when your PC boots up.
 4. MongoDB will be installed in the `C:\Program Files\MongoDB\Server<version>` directory by default. You may need to add this directory to your system's PATH environment variable to run MongoDB commands from any command prompt.
-5. Create a directory for your MongoDB data. By default, MongoDB stores data in the "C:\data\db" directory. You can create this directory manually or use the following command in Command Prompt:
-
-```
-mkdir C:\data\db
-```
-
-6. Open Command Prompt as an administrator. Navigate to the directory where MongoDB is installed. For example:
-
-```
-cd C:\Program Files\MongoDB\Server\<version>\bin
-```
-
-7. Start the MongoDB server by running:
-
-```
-./mongod.exe
-```
-
-8. The server should now be running, and you should see log messages indicating its status.
-9. To stop the MongoDB server, go back to the Command Prompt where it's running and press Ctrl + C.
 
 ## Snapshot of `secret.html`
 
