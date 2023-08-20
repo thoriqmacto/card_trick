@@ -38,7 +38,7 @@ Additional guide would be added here.
 
 ### Snapshot of retrieving data when typing in browser `http://localhost:3000/fulan`
 
-![Fulan data retrieved](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_fulan_retrieve.png?raw=true)
+![Fulan data retrieved](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_page_fulan_retrieve.png?raw=true)
 
 ## LICENSE
 
