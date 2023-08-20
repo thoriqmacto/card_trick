@@ -6,12 +6,13 @@ Link: [Youtube Video](https://www.youtube.com/watch?v=h21pa3yeW08)
 
 This codebase was not fully similar with the tutorial. Some of modifications has been added for author's learning purpose.
 
-## Initialization Step
+## General Step
 
 1. Initialize dependencies library by: `npm init -y` to make prompt answer to "yes".
 2. Installing npm packages require for this tutorial (`express`, `body-parser` and `mongodb`) by type: `npm install express body-parser mongodb`.
 3. You can start to code as per tutorial.
 4. To run the code just simply typing `node server.js`
+5. You can open to test the query from **browser** or **postman** by typing `http://localhost:3000/secret`
 
 ## Installing & Run MongoDB Server Locally (Windows)
 
