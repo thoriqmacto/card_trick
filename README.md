@@ -23,21 +23,22 @@ This codebase was not fully similar with the tutorial. Some of modifications has
 6. Author using MongoDB server version v6.0.8 which different with the version that use by tutorial. Different way to interact using barebone NodeJS mongodb driver is to wrap all query using async/await Promises.
 7. Do not use WSL to run `node server.js` using windows Command Prompt or Powershell. It will end up with Topology error.
 
-## Deployment on Heroku (Howto would be added here)
+## Deployment on Heroku
 
 This deployment would be conducted after creation of Heroku accounts.
+Additional guide would be added here.
 
 ### **[Version 1.0]** Snapshot of `secret.html` form submission
 
-![Form Submission secret.html](https://github.com/thoriqmacto/card_trick/blob/main/secret_html_page.png?raw=true)
+![Form Submission secret.html](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_page.png?raw=true)
 
 ### Snapshot of entering data through form using `fulan` name.
 
-![Submit with fulan](https://github.com/thoriqmacto/card_trick/blob/main/secret_html_page_fulan.png?raw=true)
+![Submit with fulan](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_page_fulan.png?raw=true)
 
 ### Snapshot of retrieving data when typing in browser `http://localhost:3000/fulan`
 
-![Fulan data retrieved](https://github.com/thoriqmacto/card_trick/blob/main/secret_html_fulan_retrieve.png?raw=true)
+![Fulan data retrieved](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_fulan_retrieve.png?raw=true)
 
 ## LICENSE
 
