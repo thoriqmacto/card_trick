@@ -1,4 +1,4 @@
-# Background Story
+## Background Story
 
 `about:` Codebase for following a tutorial hosted by FreeCodecamp titled "Code a magic card trick using JavaScript & Node.js".
 
@@ -27,6 +27,8 @@ This codebase was not fully similar with the tutorial. Some of modifications has
 
 This deployment would be conducted after creation of Heroku accounts.
 Additional guide would be added here.
+
+## Snapshot of End Product
 
 ### **[Version 1.0]** Snapshot of `secret.html` form submission
 
