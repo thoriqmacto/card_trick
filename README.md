@@ -43,6 +43,12 @@ Additional guide would be added here.
 
 ![Fulan data retrieved](https://github.com/thoriqmacto/card_trick/blob/main/public/secret_html_page_fulan_retrieve.png?raw=true)
 
+## TODO
+
+1. Add standard markup
+2. Add minimum styling
+3. Add AJAX
+
 ## LICENSE
 
 MIT License
