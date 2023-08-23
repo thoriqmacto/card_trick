@@ -48,6 +48,7 @@ Additional guide would be added here.
 1. Add standard markup
 2. Add minimum styling
 3. Add AJAX
+4. Deploy to Heroku
 
 ## LICENSE
 
